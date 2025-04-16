@@ -1,0 +1,111 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: rgba(165, 168, 172, 0.15);
+  border: 1px solid rgba(197, 165, 114, 0.1);
+  padding: 3rem 3.5rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(12, 35, 64, 0.15);
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  color: var(--disabled);
+  opacity: 1;
+  transform: rotate(180deg);
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.2rem;
+}
+
+.inputGroup {
+  margin-bottom: 1rem;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--disabled);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background-color: var(--white);
+}
+
+.inputGroup input:focus {
+  background-color: var(--white);
+  box-shadow: 0 0 0 3px rgba(197, 165, 114, 0.15);
+}
+
+.submitButton {
+  width: 100%;
+  padding: 0.6rem;
+  background: linear-gradient(to right, var(--disabled), var(--gray-800));
+  color: var(--disabled);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(12, 35, 64, 0.15);
+}
+
+.submitButton:hover {
+  background: linear-gradient(to right, var(--gray-800), var(--disabled));
+  transform: translateY(-2px);
+  color: rgb(179, 166, 166);
+  box-shadow: 0 6px 16px rgba(12, 35, 64, 0.2);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0px 1000px var(--white) inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--white) inset !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}

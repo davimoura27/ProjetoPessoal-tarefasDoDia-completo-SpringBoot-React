@@ -1,0 +1,187 @@
+:root{
+  --gray-200: #cdd3e1;
+ --gray-300: #aab3cc;
+ --gray-400: #6d717a;
+ --gray-500: #454f6a;
+ --gray-600: #363d56;
+ --gray-700: #35373b;
+ --gray-800: #181f2e;
+ --gray-900: #2e3136;
+
+ --primary-light: #4de7b7;
+ --primary: #0da170;
+ --primary-dark: #065f46;
+
+ --link-color: #10b981;
+ --link-hover: #0b8a60;
+
+ --success: #22c55e;
+ --warning: #eab308;
+ --error: #991b1b;
+ --info: #0ea5e9;
+
+ --text-over-primary: #0a0f1a;
+ --text-over-primary-dark: #e6e9f0;
+ --text-over-primary-light: #0a0f1a;
+ --text-over-success: #0a0f1a;
+ --text-over-warning: #0a0f1a;
+ --text-over-error: #e6e9f0;
+ --text-over-info: #0a0f1a;
+
+ --text-default: #e6e9f0;
+ --text-muted: #aab3cc;
+
+ --disabled: #555f7d;
+ --text-disabled: #50535a;
+}
+
+.containerBody {
+  display: flex;
+  align-items: center;
+  
+  flex-direction: column;
+  padding: 10px;
+  width: 95%;
+  color: var(--text-disabled);
+  overflow: hidden;
+
+}
+
+
+.container {
+  
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+.configButton {
+  display: flex;
+  align-items: center;
+  
+}
+.containerButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  
+}
+.logo{
+    color: var(--warning);
+    
+}
+.title{
+    font-size: 1.8rem;
+}
+.buttonStyle{
+    background-color: transparent;
+    color: var(--disabled);
+    border: 2px solid var(--disabled) ;
+    padding: 0.3rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(14, 13, 11, 0.938)
+}
+.buttonStyleCreate{
+  background-color:var(--disabled);
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(14, 13, 11, 0.938)
+}
+.buttonStyle:hover{
+    background-color: var(--disabled);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 13, 11, 0.938);
+}
+.buttonStyleCreate:hover{
+  background-color:#363f5a ;
+  color: white;
+  
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(7, 6, 5, 0.938);
+}
+.buttonStyle:active{
+    transform: translateY(0);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--warning);
+  border-radius: 8px;
+  cursor: pointer;
+  height: 2vh;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  position: relative;
+}
+.userInfo:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.userInfo:after {
+  content: "Clique para sair";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.userInfo:hover:after {
+  opacity: 1;
+}
+.userIcon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  min-width: 24px;
+}
+.userInfo:hover .userIcon {
+  transform: scale(1.1);
+}
+.username {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    text-transform: capitalize;
+}
