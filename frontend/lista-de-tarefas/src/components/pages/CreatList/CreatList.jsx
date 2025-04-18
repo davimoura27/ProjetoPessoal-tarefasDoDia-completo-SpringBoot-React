@@ -3,176 +3,176 @@ import style from "./tarefas.module.css";
 import { taskService } from "../../../Api/api";
 
 export function CreatList() {
-  const [lista, setLista] = useState([]);
-  const [titulo, setTitulo] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [filtroCategoria, setFiltroCategoria] = useState("todos");
+  const [taskList, setTaskList] = useState([]);
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [filterCategory, setFilterCategory] = useState("Todas");
   const [status, setStatus] = useState("");
-  const [editarLista, setEditarLista] = useState(null);
-  const [completarTarefa, setCompletarTarefa] = useState(new Set());
+  const [editingTask, setEditingTask] = useState(null);
+  const [completedTasks, setCompletedTasks] = useState(new Set());
 
-  const getTarefas = async () => {
+  const getTasks = async () => {
     try {
       const response = await taskService.getTasks();
-      setLista(response.data);
+      setTaskList(response.data);
     } catch (error) {
-      console.error("Erro ao buscar tarefa", error);
+      console.error("Error fetching tasks", error);
     }
   };
+
   useEffect(() => {
-    getTarefas();
+    getTasks();
   }, []);
 
-  const createTasks = async (event) => {
+  const createOrUpdateTask = async (event) => {
     event.preventDefault();
 
-    if (!titulo || !categoria) {
-      alert("Preencha os campos");
+    if (!title || !category) {
+      alert("Please fill in all fields");
       return;
     }
 
     try {
-      if (editarLista) {
-        await taskService.updateTask(editarLista.id, {
-          titulo,
-          categoria,
+      if (editingTask) {
+        await taskService.updateTask(editingTask.id, {
+          titulo: title,
+          categoria: category,
           status,
         });
       } else {
-        await taskService.createTask({ titulo, categoria, status });
+        await taskService.createTask({ titulo: title, categoria: category, status });
       }
-      setCategoria("");
-      setTitulo("");
+      setCategory("");
+      setTitle("");
       setStatus("");
-      setEditarLista(null);
-      getTarefas();
+      setEditingTask(null);
+      getTasks();
     } catch (error) {
-      console.error("Erro ao criar tarefa", error);
+      console.error("Error creating task", error);
     }
   };
 
-  const deleteTarefa = async (id) => {
+  const deleteTask = async (id) => {
     try {
       await taskService.deleteTask(id);
-      setLista(lista.filter((tarefa) => tarefa.id !== id));
-      getTarefas();
+      setTaskList(taskList.filter((task) => task.id !== id));
+      getTasks();
     } catch (error) {
-      console.error("Erro ao excluir tarefa", error);
+      console.error("Error deleting task", error);
     }
   };
 
-  const formeditarTarefa = (tarefa) => {
-    setEditarLista(tarefa);
-    setTitulo(tarefa.titulo);
-    setCategoria(tarefa.categoria);
+  const handleEditForm = (task) => {
+    setEditingTask(task);
+    setTitle(task.titulo);
+    setCategory(task.categoria);
   };
 
-  const completeTarefa = (id) => {
-    setCompletarTarefa((prev) => {
-      const newCompleted = new Set(prev);
-      if (newCompleted.has(id)) {
-        newCompleted.delete(id);
+  const toggleCompleteTask = (id) => {
+    setCompletedTasks((prev) => {
+      const updated = new Set(prev);
+      if (updated.has(id)) {
+        updated.delete(id);
       } else {
-        newCompleted.add(id);
+        updated.add(id);
       }
-      return newCompleted;
+      return updated;
     });
   };
-  const tarefasfiltro = lista.filter((tarefa) => {
-    return filtroCategoria === "todos" || tarefa.categoria === filtroCategoria;
+
+  const filteredTasks = taskList.filter((task) => {
+    return filterCategory === "Todas" || task.categoria === filterCategory;
   });
 
   return (
-    <div className={style.body}>
+    <div className={style.wrapper}>
       <div className={style.container}>
-        <div className={style.containerButton}>
-          <div className={style.formulario}>
-          <form onSubmit={createTasks}>
-          <h1 className={style.title}>Lista de Tarefas</h1>
-            <div className={style.criarTarefa}>
-              <h4 className={style.title2}>
-                {editarLista ? "Editar tarefa" : "Criar tarefa"}
-              </h4>
-              <div className={style.criar}>
-                <select
-                  className={style.buttonCategoria}
-                  name="criar"
-                  id="criar"
-                  value={categoria}
-                  onChange={(e) => setCategoria(e.target.value)}
-                >
-                  <option value="">Selecione uma Categoria</option>
-                  <option value="Estudo">Estudo</option>
-                  <option value="Trabalho">Trabalho</option>
-                  <option value="Pessoal">Pessoal</option>
-                </select>
+        <div className={style.containerButtons}>
+          <div className={style.form}>
+            <form onSubmit={createOrUpdateTask}>
+              <h1 className={style.heading}>Lista de tarefas</h1>
+              <div className={style.createTask}>
+                <h4 className={style.subheading}>
+                  {editingTask ? "Editar tarefa" : "Criar tarefa"}
+                </h4>
+                <div className={style.selectCategory}>
+                  <select
+                    className={style.categoryButton}
+                    name="create"
+                    id="create"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                  >
+                    <option value="">Selecione uma categoria</option>
+                    <option value="Estudo">Estudo</option>
+                    <option value="Trabalho">Trabalho</option>
+                    <option value="Pessoal">Pessoal</option>
+                  </select>
+                </div>
+                <div className={style.inputArea}>
+                  <input
+                    placeholder="Digite o titulo"
+                    type="text"
+                    id="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                  />
+                  <button type="submit" className={style.createOrEdit}>
+                    {editingTask ? "Salvar tarefa" : "Criar tarefa"}
+                  </button>
+                </div>
               </div>
-              <div className={style.tituloPesquisa}>
-                <input
-                  placeholder="Digite o titulo"
-                  type="text"
-                  id="titulo"
-                  value={titulo}
-                  onChange={(e) => setTitulo(e.target.value)}
-                  required
-                />
-
-                <button type="submit" className={style.criarEditar}>
-                  {editarLista ? "Salvar Edição" : "Criar Tarefa"}
-                </button>
-              </div>
-            </div>
-          </form>
+            </form>
           </div>
 
-          <div className={style.tarefasContainer}>
-
-            <div className={style.pesquisarTarefas}>
-              <h4 className={style.titlePesquisa}>Pesquisar</h4>
+          <div className={style.taskContainer}>
+            <div className={style.searchTasks}>
+              <h4 className={style.searchTitle}>Pesquisar</h4>
               <select
-                id="pesquisa"
-                value={filtroCategoria}
-                onChange={(e) => setFiltroCategoria(e.target.value)}
+                id="search"
+                value={filterCategory}
+                onChange={(e) => setFilterCategory(e.target.value)}
               >
-                <option value="todos">Todos</option>
-                <option value="Estudo"> Estudo</option>
+                <option value="Todas">Todas</option>
+                <option value="Estudo">Estudo</option>
                 <option value="Trabalho">Trabalho</option>
                 <option value="Pessoal">Pessoal</option>
               </select>
             </div>
 
-            <div className={style.listaTarefa}>
-              {tarefasfiltro.length === 0 ? (
-                <p>Não ha tarefas cadastradas</p>
+            <div className={style.taskList}>
+              {filteredTasks.length === 0 ? (
+                <p>Não ha tarefas registradas!</p>
               ) : (
-                tarefasfiltro.map((listas) => (
-                  <div key={listas.id} className={style.todasTarefas}>
+                filteredTasks.map((task) => (
+                  <div key={task.id} className={style.taskItem}>
                     <div
-                      className={`${style.categoria} ${
-                        completarTarefa.has(listas.id) ? style.completar : ""
+                      className={`${style.category} ${
+                        completedTasks.has(task.id) ? style.completed : ""
                       }`}
                     >
-                      <p className={style.titulo}>{listas.titulo}</p>
-                      <p className={style.categoryList}>({listas.categoria})</p>
+                      <p className={style.title}>{task.titulo}</p>
+                      <p className={style.categoryLabel}>({task.categoria})</p>
                     </div>
-                    <div className={style.status}>
+                    <div className={style.buttons}>
                       <button
                         className={style.complete}
-                        onClick={() => completeTarefa(listas.id)}
+                        onClick={() => toggleCompleteTask(task.id)}
                       >
-                        Completar
+                        Complete
                       </button>
                       <button
-                        className={style.deletar}
-                        onClick={() => deleteTarefa(listas.id)}
+                        className={style.delete}
+                        onClick={() => deleteTask(task.id)}
                       >
-                        <i class="fa-solid fa-trash"></i>
+                        <i className="fa-solid fa-trash"></i>
                       </button>
                       <button
                         className={style.edit}
-                        onClick={() => formeditarTarefa(listas)}
+                        onClick={() => handleEditForm(task)}
                       >
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <i className="fa-solid fa-pen-to-square"></i>
                       </button>
                     </div>
                   </div>

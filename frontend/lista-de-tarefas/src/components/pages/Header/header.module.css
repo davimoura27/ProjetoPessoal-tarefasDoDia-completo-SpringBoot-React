@@ -74,7 +74,7 @@
 }
 .logo{
     color: var(--warning);
-    
+    font-size: 40px;
 }
 .title{
     font-size: 1.8rem;
@@ -167,7 +167,7 @@
   opacity: 1;
 }
 .userIcon {
-  font-size: 1.2rem;
+  size: 24px;
   transition: transform 0.3s ease;
   min-width: 24px;
 }
@@ -185,3 +185,55 @@
     max-width: 150px;
     text-transform: capitalize;
 }
+
+@media(max-width:400px){
+  .title{
+    font-size: 1.2rem;
+  }
+  .logo{
+    font-size: 30px;
+  }
+ .userInfo{
+  padding: 0.7rem 0.6rem;
+  gap: 5px;
+ }
+ .userIcon {
+size: 15px;
+}
+  .username{
+   
+    font-size: 0.7rem;
+  }
+ 
+}
+@media(min-width:401px) and (max-width:430px){
+  .title{
+    font-size: 1.6rem;
+  }
+  .logo{
+    font-size: 30px;
+  }
+ .userInfo{
+  padding: 0.7rem 0.8rem;
+  gap: 5px;
+ }
+ .userIcon {
+size: 18px;
+}
+  .username{
+   
+    font-size: 0.8rem;
+  }
+}
+@media(min-width:700px){
+  .title{
+    font-size: 2.3rem;
+  }
+  
+ 
+ .userIcon {
+font-size: 25px;
+}
+  
+}
+

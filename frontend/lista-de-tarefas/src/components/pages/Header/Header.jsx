@@ -38,7 +38,7 @@ export function Header() {
     <div className={styles.containerBody}>
       <div className={styles.container}>
         <div className={styles.logoContainer}>
-          <ClipboardText size={40}  weight="light" className={styles.logo}/>
+          <ClipboardText   weight="light" className={styles.logo}/>
           <h1 className={styles.title}>Tarefas do dia</h1>
         </div>
 
@@ -46,7 +46,7 @@ export function Header() {
           <li className={styles.containerButton}>
             {isLoggedIn ? (
               <div className={styles.userInfo} onClick={handleLogout}>
-                <User size={24} weight="fill" className={styles.userIcon} />
+                <User weight="fill" className={styles.userIcon} />
                 <span className={styles.username}>{username}</span>
               </div>
             ) : (

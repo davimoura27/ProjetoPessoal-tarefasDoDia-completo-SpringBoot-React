@@ -3,7 +3,7 @@ import img1 from "/src/assets/img1.jpg"
 export function Home() {
   return (
     <div className={style.container}>
-      <div className={style.descricao}>
+      <div className={style.description}>
         <div className={style.title}>
           <h1>Bem-vindo ao gerenciador de tarefas 🚀</h1>
         </div>
@@ -18,7 +18,7 @@ export function Home() {
         </div>
         <h3>💡 Torne seu dia mais produtivo com o Taredas do dia!</h3>
       </div>
-      <div className={style.imagem}>
+      <div className={style.image}>
         <img src={img1} alt="" />
       </div>
     </div>
