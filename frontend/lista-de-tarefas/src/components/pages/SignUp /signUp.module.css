@@ -109,3 +109,58 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0px 1000px var(--white) inset !important;
   transition: background-color 9999s ease-in-out 0s !important;
 }
+@media (max-width: 400px) {
+  .modal {
+    padding: 2rem 3rem;
+    width: 80%;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .inputGroup label {
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  .inputGroup input {
+    padding: 0.1rem 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  .submitButton {
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 0.9rem;
+  }
+  .closeButton {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 401px) and (max-width: 430px) {
+ .modal{
+  border: solid;
+ }
+  .title {
+    font-size: 1.7rem;
+  }
+
+  .inputGroup label {
+    margin-bottom: 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  .inputGroup input {
+    padding: 0.1rem 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  .submitButton {
+    width: 100%;
+    padding: 0.3rem;
+    font-size: 0.9rem;
+  }
+  .closeButton {
+    font-size: 1.2rem;
+  }
+}

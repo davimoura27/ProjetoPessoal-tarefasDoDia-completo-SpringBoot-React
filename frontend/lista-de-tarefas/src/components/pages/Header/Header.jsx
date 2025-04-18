@@ -50,7 +50,7 @@ export function Header() {
                 <span className={styles.username}>{username}</span>
               </div>
             ) : (
-              <>
+              <div className={styles.buttonsContainer}>
                 <button
                   className={styles.buttonStyle}
                   onClick={() => {
@@ -69,7 +69,7 @@ export function Header() {
                 >
                   Criar Conta
                 </button>
-              </>
+              </div>
             )}
           </li>
         </div>
