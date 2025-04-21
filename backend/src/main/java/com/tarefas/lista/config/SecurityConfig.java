@@ -62,9 +62,10 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(
-    "http://localhost:3000",
-    "https:fancy-beijinho-28b6fa.netlify.app" // ⬅️ substitua pelo link real do seu front
-));
+            "http://localhost:3000",
+            "https://fancy-beijinho-28b6fa.netlify.app"
+        ));
+        
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With"));
         configuration.setAllowCredentials(true);
