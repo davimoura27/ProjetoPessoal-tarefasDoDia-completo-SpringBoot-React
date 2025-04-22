@@ -40,7 +40,6 @@ public class SecurityConfig {
                 .requestMatchers("/auth/login/**").permitAll()                
                 .requestMatchers("/users/register/**").permitAll()
                 .requestMatchers("/api/public/**").permitAll()
-                .requestMatchers(HttpMethod.OPTIONS, "/users/register").permitAll()
                 .requestMatchers("/api/tarefas/**").permitAll()
                 .requestMatchers("/tarefas/**").permitAll()
                 .requestMatchers("/error/**").permitAll()
