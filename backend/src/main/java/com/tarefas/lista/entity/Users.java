@@ -26,7 +26,7 @@ public class Users {
     @Column(nullable = false, unique = true)
     private String username;
 
-  
+    @NotBlank(message = "Email já cadastrado")
     @Email(message = "Digite um email valido")
     @Column(name = "email", nullable = false, unique = true)
     private String email;
