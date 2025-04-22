@@ -20,7 +20,7 @@ body,
   height: 100vh;
   background-image: url("/src/assets/imgFundo.jpg");
   background-size: cover;
-  
+  overflow: hidden;
 }
 .layout {
 
