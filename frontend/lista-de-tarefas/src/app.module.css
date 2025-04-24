@@ -36,8 +36,13 @@ body,
   border-radius: 8px;
 
 }
-@media(max-width:400px){
-  .layout{
-   
+@media (min-width: 700px) and (max-width:1024px) {
+  .container{
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
