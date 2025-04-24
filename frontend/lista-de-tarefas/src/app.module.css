@@ -29,20 +29,12 @@ body,
   justify-content: center;
   flex-direction: column;
   width: 80%;
-  height: 80%;
+  height: 90%;
   background-color: white;
   overflow: hidden;
   box-shadow: 0 6px 16px rgb(18, 19, 20);
   border-radius: 8px;
+  overflow: hidden;
 
 }
-@media (min-width: 700px) and (max-width:1024px) {
-  .container{
-    height: 100%;
-    width: 100%;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
+
