@@ -17,7 +17,7 @@ body,
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: 100dvh;
   background-image: url("/src/assets/imgFundo.jpg");
   background-size: cover;
   overflow: hidden;
@@ -29,8 +29,7 @@ body,
   justify-content: center;
   flex-direction: column;
   width: 80%;
-  height: 85%;
-  margin-top: -100PX;
+  height: 80%;
   background-color: white;
   overflow: hidden;
   box-shadow: 0 6px 16px rgb(18, 19, 20);
