@@ -21,14 +21,17 @@ public class RegisterController {
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody Users users){
-         if (registerService.existentsByEmail(users.getEmail())) {
-            return ResponseEntity.badRequest()
-            .body(Map.of("message", "Email já cadastrado!"));
-         }
-         if (registerService.existentsByUsername(users.getUsername())) {
-            return ResponseEntity.badRequest()
-            .body(Map.of("message" , "Nome de usuario já cadastrado"));
-         }
+        if (registerService.existsByEmail(users.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(Map.of("message", "Email já cadastrado"));
+        }
+    
+        if (registerService.existsByUsername(users.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(Map.of("message", "Nome de usuário já cadastrado"));
+        }
  
 
         registerService.saveUser(users);

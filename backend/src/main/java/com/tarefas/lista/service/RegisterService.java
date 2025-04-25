@@ -8,6 +8,7 @@ import com.tarefas.lista.entity.Users;
 
 import com.tarefas.lista.repository.UserRepository;
 
+
 @Service
 public class RegisterService {
     @Autowired
@@ -19,23 +20,25 @@ public class RegisterService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-        
-    public void saveUser(Users users){
-      
-      users.setPassword(passwordEncoder.encode(users.getPassword()));      
-      userRepository.save(users);
-      sendEmailNotification(users);
+    public void saveUser(Users users) {
+        users.setPassword(passwordEncoder.encode(users.getPassword()));
+        userRepository.save(users);
+        sendEmailNotification(users);
     }
-    public boolean existentsByEmail(String email){
-      return userRepository.exitentByEmail(email);
+  
+
+    public boolean existsByEmail(String email) {
+      return userRepository.existsByEmail(email);
+  }
+  
+  public boolean existsByUsername(String username) {
+      return userRepository.existsByUsername(username);
+  }
+  
+
+    private void sendEmailNotification(Users users) {
+        String subject = "Bem vindo!";
+        String text = "Você foi cadastrado com sucesso " + users.getFullName().toUpperCase();
+        emailService.sendEmail(users.getEmail(), text, subject);
     }
-    public boolean existentsByUsername(String username){
-      return userRepository.existentByUsername(username);
-    }
-    
-    private void sendEmailNotification(Users users){
-      String subject = "Bem vindo!";
-      String text = "Você foi cadastrado com sucesso " + users.getFullName().toUpperCase() ;
-      emailService.sendEmail(users.getEmail(), text, subject);
-    }  
 }
