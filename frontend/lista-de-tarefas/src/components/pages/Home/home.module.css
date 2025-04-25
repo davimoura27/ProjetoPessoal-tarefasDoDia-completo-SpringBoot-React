@@ -134,13 +134,6 @@ p {
     display: flex;
     justify-content: center;
   }
-<<<<<<< HEAD
-  .title h1 {
-=======
-   .title h1 {
->>>>>>> bdcb1893a8dacf77f5dca84b449d08af16344ad5
-    font-size: 1.2rem;
-  }
  
   .description h3 {
     font-size: 1rem;
@@ -149,14 +142,6 @@ p {
   p {
     font-size: 1rem;
   }
-  .image {
-<<<<<<< HEAD
-    width: 60%;
-    height: 45%;
-=======
-    width: 70%;
-    height: 50%;
->>>>>>> bdcb1893a8dacf77f5dca84b449d08af16344ad5
-    
-  }
+  
+  
 }
