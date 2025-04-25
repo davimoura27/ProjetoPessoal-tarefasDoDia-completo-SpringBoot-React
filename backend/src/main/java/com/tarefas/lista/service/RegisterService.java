@@ -26,6 +26,13 @@ public class RegisterService {
       userRepository.save(users);
       sendEmailNotification(users);
     }
+    public boolean existentsByEmail(String email){
+      return userRepository.exitentByEmail(email);
+    }
+    public boolean existentsByUsername(String username){
+      return userRepository.existentByUsername(username);
+    }
+    
     private void sendEmailNotification(Users users){
       String subject = "Bem vindo!";
       String text = "Você foi cadastrado com sucesso " + users.getFullName().toUpperCase() ;
