@@ -31,11 +31,9 @@ const SignUp = ({ isOpen, onClose }) => {
       } else {
         const errorData = await response.json();
         const errorMessage = errorData.message||errorData.error || 'Erro desconhecido ao cadastrar'
-<<<<<<< HEAD
+
         setError(`Erro ao registrar: ${errorMessage}`)
-=======
-        alert(`Erro ao cadastrar: ${errorMessage}`);
->>>>>>> bdcb1893a8dacf77f5dca84b449d08af16344ad5
+
       }
     } catch (error) {
       alert("Erro ao se conectar com o servidor", error);
