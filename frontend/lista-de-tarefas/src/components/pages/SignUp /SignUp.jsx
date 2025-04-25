@@ -9,6 +9,7 @@ const SignUp = ({ isOpen, onClose }) => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLoginCadastro = async (e) => {
@@ -29,7 +30,8 @@ const SignUp = ({ isOpen, onClose }) => {
         onClose();
       } else {
         const errorData = await response.json();
-        alert(`Erro ao cadastrar: ${errorData.message}`);
+        const errorMessage = errorData.message||errorData.error || 'Erro desconhecido ao cadastrar'
+        setError(`Erro ao registrar: ${errorMessage}`)
       }
     } catch (error) {
       alert("Erro ao se conectar com o servidor", error);
@@ -45,6 +47,7 @@ const SignUp = ({ isOpen, onClose }) => {
     <>
   
     
+        {error && <p className={style.errorMessage}>{error}</p>}
         <h1 className={style.title}>Crie sua conta</h1>
         <form onSubmit={handleLoginCadastro}>
           <div className={style.inputGroup}>

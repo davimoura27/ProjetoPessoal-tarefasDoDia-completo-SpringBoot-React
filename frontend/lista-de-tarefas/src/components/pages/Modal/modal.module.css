@@ -101,6 +101,10 @@
   color: rgb(179, 166, 166);
   box-shadow: 0 6px 16px rgba(12, 35, 64, 0.2);
 }
+.errorMessage{
+  color: red;
+  
+}
 
 .submitButton:disabled {
   opacity: 0.7;

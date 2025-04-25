@@ -10,6 +10,19 @@
   color: var(--text-disabled);
   
 }
+.messagemAlert{
+  position: fixed;
+  top: 20px;
+  display: flex;
+  align-items:center ;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+}
 
 .container {
   display: flex;

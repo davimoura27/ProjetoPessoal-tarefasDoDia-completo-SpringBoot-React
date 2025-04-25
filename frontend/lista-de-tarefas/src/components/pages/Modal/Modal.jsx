@@ -46,8 +46,8 @@ export function Modal({ isOpen, isSignUp, onClose, onLoginSuccess }) {
                 ) : (
                     <>
                     <button className={style.closeButton} onClick={onClose}>X</button>
-                        <h1 className={style.title}>Entre na sua conta</h1>
                         {error && <p className={style.errorMessage}>{error}</p>}
+                        <h1 className={style.title}>Entre na sua conta</h1>
                         <form onSubmit={handleLogin}>
                             <div className={style.inputGroup}>
                                 <label htmlFor="userName">Nome de usuário:</label>

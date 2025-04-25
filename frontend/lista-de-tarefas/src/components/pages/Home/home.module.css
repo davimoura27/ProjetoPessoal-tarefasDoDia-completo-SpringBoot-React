@@ -127,6 +127,7 @@ p {
   .description {
     width: 90%;    
     align-items: flex-start;
+ 
   }
   .title{
     width: 90%;
@@ -134,18 +135,19 @@ p {
     justify-content: center;
   }
   .title h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
+ 
   .description h3 {
-    font-size: 1.4rem;
+    font-size: 1rem;
     
   }
   p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .image {
-    width: 85%;
-    height: 80%;
+    width: 60%;
+    height: 45%;
     
   }
 }

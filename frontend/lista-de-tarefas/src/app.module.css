@@ -17,7 +17,7 @@ body,
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: 100dvh;
   background-image: url("/src/assets/imgFundo.jpg");
   background-size: cover;
   overflow: hidden;
@@ -36,8 +36,6 @@ body,
   border-radius: 8px;
 
 }
-@media(max-width:400px){
-  .layout{
-   
-  }
-}
+
+
+

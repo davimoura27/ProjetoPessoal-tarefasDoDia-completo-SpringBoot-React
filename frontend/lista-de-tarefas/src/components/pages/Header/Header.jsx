@@ -28,6 +28,9 @@ export function Header() {
   };
 
   const handleLogout = () => {
+    const confirmLogout = window.confirm("Deseja realmente sair?");
+    if(!confirmLogout) return
+    
     localStorage.removeItem("user");
     setIsLoggedIn(false);
     setUserName("");
