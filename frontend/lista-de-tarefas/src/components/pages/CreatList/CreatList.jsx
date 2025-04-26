@@ -112,7 +112,9 @@ export function CreatList() {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer 
+       toastClassName={style.toastCustom}
+      />
 
       <div className={style.wrapper}>
         <div className={style.container}>

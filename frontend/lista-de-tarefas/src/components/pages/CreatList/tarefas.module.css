@@ -195,8 +195,23 @@
   text-decoration: line-through;
   opacity: 0.6;
 }
+.toastCustom {
+  font-size: 0.7rem;
+  padding: 1rem;
+  border-radius: 10px;
+  word-break: break-word;
+
+}
+
+
 
 @media (max-width: 400px) {
+  .toastCustom {
+    font-size: 0.8rem;
+    padding: 0.6rem;
+    width: 70dvw;
+    margin: 0 auto;
+  }
   .wrapper {
     box-shadow: none;
   }
@@ -255,6 +270,12 @@
 }
 
 @media (min-width:401px) and (max-width: 430px) {
+  .toastCustom {
+    font-size: 0.85rem;
+    padding: 0.7rem;
+    width: 75dvw;
+    margin: 0 auto;
+  }
  
   .heading {
     font-size: 1.5rem;

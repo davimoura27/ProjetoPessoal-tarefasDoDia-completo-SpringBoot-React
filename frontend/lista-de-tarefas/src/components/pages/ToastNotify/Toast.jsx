@@ -8,8 +8,9 @@ export const ToastNotify = {
     warn: (msg) => toast.warn(msg),
 
     confirm: (message, onConfirm) => toast.info(
+        
         ({ closeToast}) => (
-            <div>
+            <div className={style.container}>
             <p>{message}</p>
             <div className={style.containerInfo}>
                 <button 
@@ -28,6 +29,7 @@ export const ToastNotify = {
                 </button>
             </div>
             </div>
+        
         ),
         {autoClose:false}
     )
