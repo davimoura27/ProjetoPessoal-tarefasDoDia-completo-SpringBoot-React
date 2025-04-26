@@ -5,6 +5,8 @@ import styles from "./header.module.css";
 import { useNavigate } from "react-router-dom";
 import { ToastNotify } from "../ToastNotify/Toast";
 import { ToastContainer } from "react-toastify";
+import { useTheme } from "../ThemeContext/Theme";
+import { Moon, Sun } from "@phosphor-icons/react";
 
 export function Header() {
   const navigate = useNavigate();
@@ -13,6 +15,7 @@ export function Header() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUserName] = useState("");
+  const {isDarkTheme, toggleTheme} = useTheme();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -52,6 +55,15 @@ export function Header() {
 
         <div className={styles.configButton}>
           <li className={styles.containerButton}>
+        <div>
+          <button onClick={toggleTheme} className={styles.themeToggle}>
+            {isDarkTheme ? (
+              <Sun weight="bold"/>
+            ):(
+              <Moon weight="bold"/>
+            )}
+          </button>
+        </div>
             {isLoggedIn ? (
               <div className={styles.userInfo} onClick={handleLogout}>
                 <User weight="fill" className={styles.userIcon} />

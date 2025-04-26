@@ -77,8 +77,8 @@
 .submitButton {
   width: 100%;
   padding: 0.6rem;
-  background: linear-gradient(to right, var(--disabled), var(--gray-800));
-  color: var(--disabled);
+  background: linear-gradient(to right, var(--azul-noite), var(--azul-médio));
+  color: var(--back);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -91,9 +91,9 @@
 }
 
 .submitButton:hover {
-  background: linear-gradient(to right, var(--gray-800), var(--disabled));
+  background: linear-gradient(to right, var( --azul-noite), var(--azul-noite));
   transform: translateY(-2px);
-  color: rgb(179, 166, 166);
+  color:var(--back);
   box-shadow: 0 6px 16px rgba(12, 35, 64, 0.2);
 }
 

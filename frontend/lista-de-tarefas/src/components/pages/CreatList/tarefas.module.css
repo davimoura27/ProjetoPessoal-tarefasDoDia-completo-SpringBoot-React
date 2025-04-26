@@ -1,3 +1,27 @@
+:root {
+
+
+  --Azul-claro: #E3F2FD;
+ --azul-médio: #64B5F6;
+ --azul-principal: #2196F3;
+  --azul-escuro: #1565C0;
+  --azul-noite: #0D47A1;
+
+
+  --cinza-claro: #E0E0E0;
+  --cinza-medio: #BDBDBD;
+  --cinza-escuro: #757575;
+  --branco-cinza: #ffffff;
+
+  
+  --back:#fffcfc;
+  --warning: #eab308;
+  --buttonHover:#363f5a;
+  --disabled: #555f7d;
+  --text-disabled: #50535a;
+  --button-disabled: #5a5c5f;
+  --button-disabled2: #95a4bb;
+}
 .wrapper {
   display: flex;
   justify-content: center;
@@ -15,7 +39,7 @@
   top: 20px;
   display: flex;
   align-items:center ;
-  background-color: #d4edda;
+  background-color: var(--branco-cinza);
   color: #155724;
   padding: 10px 20px;
   border-radius: 5px;
@@ -80,16 +104,26 @@
 .searchTasks select {
   width: 8rem;
   cursor: pointer;
+  background-color: var(--branco-cinza);
+  color: var(--text-disabled);
 }
 
 .inputArea {
   display: flex;
   margin-top: 10px;
   gap: 10px;
+  
+}
+.inputArea input{
+  background-color: var(--branco-cinza);
+  color: var(--text-disabled);
+  border: 1px solid var(--text-disabled);
 }
 
 .categoryButton {
   cursor: pointer;
+  background-color: var(--branco-cinza);
+  color: var(--text-disabled);
 }
 
 .createOrEdit {
@@ -112,9 +146,9 @@
   gap: 10px;
   height: 23vh;
   overflow-y: auto;
-  border: 1px solid #ddd;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.527);
   padding: 10px;
-  background-color: white;
+  background-color: var(--branco-cinza);
   width: 100%;
 }
 
@@ -129,9 +163,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #f8f8f8;
+  background-color: var(--branco-cinza);
   border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.315);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.527);
 }
 
 .category {
@@ -200,6 +234,8 @@
   padding: 1rem;
   border-radius: 10px;
   word-break: break-word;
+  background-color: var(--branco-cinza);
+  color: var(--back);
 
 }
 

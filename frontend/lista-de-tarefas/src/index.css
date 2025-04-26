@@ -1,3 +1,33 @@
+
+:root[data-theme="dark"] {
+
+  --Azul-claro: #E3F2FD;
+  --azul-médio: #E0E0E0;
+  --azul-principal: #BDBDBD;
+   --azul-escuro: #757575;
+   --azul-noite: #424242;
+ 
+ 
+   --cinza-claro: #E0E0E0;
+   --cinza-medio: #BDBDBD;
+   --cinza-escuro: #757575;
+   --branco-cinza: #424242;
+
+    --gray-700: #cdd3e1;
+    --gray-800: #e6e9f0;
+    --gray-900: #ffffff;
+  
+   
+   
+    --warning: #eab308;
+    
+    --buttonHover:#a2a7b6;
+    --disabled: #f3f4f7;
+    --text-disabled: #c4cce2;
+  }
+  
+
+
 body{
   margin: 0;
   padding: 0;
