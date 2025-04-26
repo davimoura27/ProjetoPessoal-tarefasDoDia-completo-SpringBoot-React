@@ -30,7 +30,7 @@ export function CreatList() {
     event.preventDefault();
 
     if (!title || !category) {
-      alert("Please fill in all fields");
+      alert("Por favor preencha todos os campos");
       return;
     }
 
