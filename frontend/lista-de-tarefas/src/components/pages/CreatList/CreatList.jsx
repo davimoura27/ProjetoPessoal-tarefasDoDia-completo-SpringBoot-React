@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import style from "./tarefas.module.css";
 import { taskService } from "../../../Api/api";
+import { ToastNotify } from "../ToastNotify/Toast";
+import { ToastContainer } from "react-toastify";
 
 export function CreatList() {
   const [taskList, setTaskList] = useState([]);
@@ -10,7 +12,6 @@ export function CreatList() {
   const [status, setStatus] = useState("");
   const [editingTask, setEditingTask] = useState(null);
   const [completedTasks, setCompletedTasks] = useState(new Set());
-  const [messageAlert, setMessageAlert] = useState("");
 
   const getTasks = async () => {
     try {
@@ -34,29 +35,30 @@ export function CreatList() {
     }
 
     try {
-      
       if (editingTask) {
-
-        const confirmEdit = window.confirm("Deseja realmente editar essa tarefa?")
-        if(!confirmEdit) return
-        
-        await taskService.updateTask(editingTask.id, {
-          titulo: title,
-          categoria: category,
-          status,
-        });
-        setMessageAlert("Tarefa Atualizada com sucesso!✅");
+        ToastNotify.confirm("Deseja realmente editar essa tarefa?",
+          async () => {
+            await taskService.updateTask(editingTask.id, {
+              titulo: title,
+              categoria: category,
+              status,
+            });
+            ToastNotify.success("Tarefa Atualizada com sucesso!✅");
+            setCategory("");
+            setTitle("");
+            setStatus("");
+            setEditingTask(null);
+            getTasks();
+          });
       } else {
         await taskService.createTask({
           titulo: title,
           categoria: category,
           status,
         });
-        setMessageAlert("Tarefa criada com sucesso! 🎉");
+        ToastNotify.success("Tarefa criada com sucesso! 🎉");
       }
-      setTimeout(() => {
-        setMessageAlert("");
-      }, 3000);
+
       setCategory("");
       setTitle("");
       setStatus("");
@@ -69,17 +71,14 @@ export function CreatList() {
 
   const deleteTask = async (id) => {
     try {
-      const confirmDelete = window.confirm("Deletar tarefa?");
-      if (!confirmDelete) return;
+      ToastNotify.confirm("Deseja realmente apagar a tarefa?", async () => {
+        await taskService.deleteTask(id);
+        setTaskList(taskList.filter((task) => task.id !== id));
 
-      await taskService.deleteTask(id);
-      setTaskList(taskList.filter((task) => task.id !== id));
+        ToastNotify.success("Tarefa deletada com sucesso!✅");
 
-      setMessageAlert("Tarefa deletada com sucesso!✅");
-      setTimeout(() => {
-        setMessageAlert("");
-      }, 3000);
-      getTasks();
+        getTasks();
+      });
     } catch (error) {
       console.error("Error deleting task", error);
     }
@@ -98,13 +97,13 @@ export function CreatList() {
         updated.delete(id);
       } else {
         updated.add(id);
-        setMessageAlert("Tarefa completa ✅");
-        setTimeout(() => {
-          setMessageAlert("");
-        }, 3000);
       }
       return updated;
     });
+    if(!completedTasks.has(id)){
+      
+      ToastNotify.success("Tarefa completa ✅");
+    }
   };
 
   const filteredTasks = taskList.filter((task) => {
@@ -113,7 +112,8 @@ export function CreatList() {
 
   return (
     <>
-      {messageAlert && <p className={style.messagemAlert}>{messageAlert}</p>}
+      <ToastContainer />
+
       <div className={style.wrapper}>
         <div className={style.container}>
           <div className={style.containerButtons}>

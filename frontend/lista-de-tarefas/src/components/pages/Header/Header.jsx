@@ -3,6 +3,8 @@ import { User, ClipboardText } from "phosphor-react";
 import { Modal } from "../Modal/Modal";
 import styles from "./header.module.css";
 import { useNavigate } from "react-router-dom";
+import { ToastNotify } from "../ToastNotify/Toast";
+import { ToastContainer } from "react-toastify";
 
 export function Header() {
   const navigate = useNavigate();
@@ -28,16 +30,19 @@ export function Header() {
   };
 
   const handleLogout = () => {
-    const confirmLogout = window.confirm("Deseja realmente sair?");
-    if(!confirmLogout) return
+    ToastNotify.confirm("Deseja realmente sair?", async ()=>{
+      localStorage.removeItem("user");
+      setIsLoggedIn(false);
+      setUserName("");
+      navigate("/");
+
+    })
     
-    localStorage.removeItem("user");
-    setIsLoggedIn(false);
-    setUserName("");
-    navigate("/");
   };
 
   return (
+    <>
+    <ToastContainer/>
     <div className={styles.containerBody}>
       <div className={styles.container}>
         <div className={styles.logoContainer}>
@@ -84,5 +89,6 @@ export function Header() {
         />
       </div>
     </div>
+    </>
   );
 }
