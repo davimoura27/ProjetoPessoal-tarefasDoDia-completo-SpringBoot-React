@@ -10,7 +10,7 @@
 
   --cinza-claro: #E0E0E0;
   --cinza-medio: #BDBDBD;
-  --cinza-escuro: #757575;
+  --cinza-escuro: #817f7f;
   --branco-cinza: #ffffff;
 
   
@@ -235,7 +235,7 @@
   border-radius: 10px;
   word-break: break-word;
   background-color: var(--branco-cinza);
-  color: var(--back);
+  color: var(--cinza-escuro);
 
 }
 

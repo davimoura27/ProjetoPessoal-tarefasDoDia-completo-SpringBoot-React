@@ -18,14 +18,18 @@ export function Header() {
   const {isDarkTheme, toggleTheme} = useTheme();
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedUser = JSON.parse(sessionStorage.getItem("user"));
     if (storedUser) {
       setIsLoggedIn(true);
       setUserName(storedUser.username);
-    }
+      } else{
+        setIsLoggedIn(false)
+        setUserName('')
+      }
   }, []);
 
   const handleLoginSuccess = (userData) => {
+    sessionStorage.setItem("user", JSON.stringify(userData));
     setIsLoggedIn(true);
     setUserName(userData.username);
     setIsModalOpen(false);
@@ -34,7 +38,7 @@ export function Header() {
 
   const handleLogout = () => {
     ToastNotify.confirm("Deseja realmente sair?", async ()=>{
-      localStorage.removeItem("user");
+      sessionStorage.removeItem("user");
       setIsLoggedIn(false);
       setUserName("");
       navigate("/");
