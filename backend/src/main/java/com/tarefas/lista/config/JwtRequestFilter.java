@@ -34,6 +34,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             username = jwtUtil.extractUsername(jwt);
         } catch (Exception e) {
             System.out.println("Erro ao processar token JWT" + e.getMessage() );
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
         }
       }
       if (username != null && SecurityContextHolder.getContext().getAuthentication()==null) {
