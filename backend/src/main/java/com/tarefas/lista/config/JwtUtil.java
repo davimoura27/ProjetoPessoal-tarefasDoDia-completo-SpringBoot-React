@@ -18,7 +18,7 @@ public String generateToken( String username){
     return JWT.create()
     .withSubject(username)
     .withIssuedAt(new Date())
-    .withExpiresAt(new Date(System.currentTimeMillis()+ 1000*60*1))
+    .withExpiresAt(new Date(System.currentTimeMillis()+ 1000*60*60*10))
     .sign(algorithm);
 }
  public String extractUsername(String token){
