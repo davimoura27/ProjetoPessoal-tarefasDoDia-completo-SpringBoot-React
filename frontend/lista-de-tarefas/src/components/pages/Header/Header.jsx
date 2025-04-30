@@ -22,6 +22,9 @@ export function Header() {
     if (storedUser) {
       setIsLoggedIn(true);
       setUserName(storedUser.username);
+      if (location.pathname === '/') {
+        navigate('/lista')
+      }
       } else{
         setIsLoggedIn(false)
         setUserName('')
@@ -49,7 +52,7 @@ export function Header() {
 
   return (
     <>
-    <ToastContainer/>
+   
     <div className={styles.containerBody}>
       <div className={styles.container}>
         <div className={styles.logoContainer}>

@@ -106,7 +106,6 @@
   cursor: pointer;
   background-color: var(--branco-cinza);
   color: var(--text-disabled);
-  border: 1px solid var(--text-disabled);
 }
 
 .inputArea {
@@ -125,7 +124,6 @@
   cursor: pointer;
   background-color: var(--branco-cinza);
   color: var(--text-disabled);
-  border: 1px solid var(--text-disabled);
 }
 
 .createOrEdit {

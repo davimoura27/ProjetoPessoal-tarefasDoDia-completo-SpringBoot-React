@@ -43,7 +43,7 @@ export function CreatList() {
               categoria: category,
               status,
             });
-            ToastNotify.success("Tarefa Atualizada com sucesso!✅");
+            ToastNotify.success("Tarefa Atualizada com sucesso!");
             setCategory("");
             setTitle("");
             setStatus("");
@@ -75,7 +75,7 @@ export function CreatList() {
         await taskService.deleteTask(id);
         setTaskList(taskList.filter((task) => task.id !== id));
 
-        ToastNotify.success("Tarefa deletada com sucesso!✅");
+        ToastNotify.success("Tarefa deletada com sucesso!");
 
         getTasks();
       });
@@ -102,7 +102,7 @@ export function CreatList() {
     });
     if(!completedTasks.has(id)){
       
-      ToastNotify.success("Tarefa completa ✅");
+      ToastNotify.success("Tarefa completa!");
     }
   };
 
