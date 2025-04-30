@@ -24,24 +24,24 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-let notify = false;
+let notify = false;   
 
 api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response && error.response.status === 401 && !notify) {
-      notify = true;
-      localStorage.removeItem("user");
-      delete api.defaults.headers.common["Authorization"];
-
-      ToastNotify.info("Sessão finalizada, faça login novamente!");
-
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 5000);
+    response=> response, error=>{
+        if(error.response && error.response.status === 401 && !notify){
+            notify = true
+            localStorage.removeItem('user');
+            delete api.defaults.headers.common['Authorization']
+                   
+            ToastNotify.info("Sessão finalizada, faça login novamente!")
+            
+            setTimeout (() =>{
+    
+                window.location.href ='/'
+            },5000)
+        }
+        return Promise.reject(error);
     }
-    return Promise.reject(error);
-  }
 );
 
 export const authService = {

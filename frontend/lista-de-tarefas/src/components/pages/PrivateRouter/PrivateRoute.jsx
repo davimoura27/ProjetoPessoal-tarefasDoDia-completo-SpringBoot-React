@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 
 export function PrivateRoute({ children }) {
-  const storedUser = JSON.parse(sessionStorage.getItem("user"));
+  const storedUser = JSON.parse(localStorage.getItem("user"));
 
   if (!storedUser) {
     return <Navigate to="/" />;
